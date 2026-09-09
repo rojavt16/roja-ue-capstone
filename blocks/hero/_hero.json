@@ -1,15 +1,24 @@
 {
   "definitions": [
     {
-      "title": "Hero",
+      "title": "Hero Banner",
       "id": "hero",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Hero",
-              "model": "hero"
+              "name": "Hero Banner",
+              "model": "hero",
+              "foreground_eyebrow": "Slow travel",
+              "foreground_title": "Find your next horizon",
+              "foreground_description": "<p>Routes worth taking slowly, chosen by editors who walked them first.</p>",
+              "foreground_primaryCta": "#americas",
+              "foreground_primaryCtaText": "Start exploring",
+              "foreground_primaryCtaType": "primary",
+              "foreground_secondaryCta": "#europe",
+              "foreground_secondaryCtaText": "Read the stories",
+              "foreground_secondaryCtaType": "secondary"
             }
           }
         }
@@ -23,23 +32,96 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "image",
-          "label": "Image",
+          "name": "background_image",
+          "label": "Background image",
+          "description": "Wide landscape crop, roughly 2400x1000",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "imageAlt",
-          "label": "Alt",
-          "value": ""
+          "name": "background_imageAlt",
+          "label": "Background image alt text",
+          "description": "Describe the place. Leave empty only if the image is purely decorative."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_title",
+          "label": "Heading",
+          "description": "Renders as the page H1. Use once per page.",
+          "required": true
         },
         {
           "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "valueType": "string",
+          "name": "foreground_description",
+          "label": "Supporting copy"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_primaryCta",
+          "label": "Primary CTA URL",
+          "description": "In-page anchor such as #americas, or a page path",
+          "required": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_primaryCtaText",
+          "label": "Primary CTA label"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_primaryCtaTitle",
+          "label": "Primary CTA title attribute"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "foreground_primaryCtaType",
+          "label": "Primary CTA style",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_secondaryCta",
+          "label": "Secondary CTA URL",
+          "description": "Optional. Leave empty to render a single CTA."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_secondaryCtaText",
+          "label": "Secondary CTA label"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "foreground_secondaryCtaTitle",
+          "label": "Secondary CTA title attribute"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "foreground_secondaryCtaType",
+          "label": "Secondary CTA style",
+          "options": [
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Primary", "value": "primary" }
+          ]
         }
       ]
     }
