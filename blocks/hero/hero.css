@@ -1,3 +1,8 @@
+/* full bleed: cancel the section max-width, padding and vertical rhythm */
+.hero-container {
+  margin: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +10,132 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  min-height: 68vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
+/* background */
+.hero .hero-background {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  z-index: 0;
 }
 
-.hero img {
-  object-fit: cover;
+.hero .hero-background picture {
+  display: block;
   width: 100%;
   height: 100%;
 }
 
+.hero .hero-background img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* scrim, keeps the copy readable over any photograph */
+.hero .hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(18 36 29 / 88%) 0%,
+    rgb(18 36 29 / 62%) 45%,
+    rgb(18 36 29 / 28%) 100%
+  );
+}
+
+/* foreground */
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 24px 48px;
+  color: #fff;
+}
+
+.hero .hero-eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.hero .hero-title {
+  margin: 0;
+  font-size: clamp(38px, 8vw, 76px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hero .hero-description {
+  max-width: 46ch;
+  margin: 16px 0 0;
+  font-size: var(--body-font-size-s);
+  color: rgb(255 255 255 / 88%);
+}
+
+.hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero .hero-actions .button-wrapper {
+  margin: 0;
+}
+
+/* buttons sit on a dark photograph, so they need their own palette */
+.hero .hero-actions .button.primary {
+  border-color: var(--color-orange);
+  background-color: var(--color-orange);
+  color: #fff;
+}
+
+.hero .hero-actions .button.primary:hover,
+.hero .hero-actions .button.primary:focus-visible {
+  border-color: var(--color-orange-dark);
+  background-color: var(--color-orange-dark);
+  color: #fff;
+}
+
+.hero .hero-actions .button.secondary {
+  border-color: rgb(255 255 255 / 70%);
+  background-color: transparent;
+  color: #fff;
+}
+
+.hero .hero-actions .button.secondary:hover,
+.hero .hero-actions .button.secondary:focus-visible {
+  border-color: #fff;
+  background-color: #fff;
+  color: var(--color-ink);
+}
+
+@media (width >= 600px) {
+  .hero .hero-content {
+    padding: 120px 32px 64px;
+  }
+}
+
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 78vh;
+  }
+
+  .hero .hero-content {
+    padding: 160px 32px 88px;
   }
 }
