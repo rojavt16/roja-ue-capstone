@@ -11,13 +11,21 @@
  */
 
 :root {
+  /* brand palette */
+  --color-forest: #1c3b30;
+  --color-forest-deep: #12241d;
+  --color-orange: #e2622c;
+  --color-orange-dark: #c44f1e;
+  --color-cream: #f6f0e6;
+  --color-ink: #1a1a1a;
+
   /* colors */
   --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --light-color: var(--color-cream);
+  --dark-color: var(--color-forest);
+  --text-color: var(--color-ink);
+  --link-color: var(--color-orange-dark);
+  --link-hover-color: var(--color-forest);
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
