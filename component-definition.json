@@ -118,10 +118,16 @@
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/columns/v1/columns",
+                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "columns": "2",
-                  "rows": "1"
+                  "name": "Columns",
+                  "model": "columns",
+                  "classes": "image-left",
+                  "content_title": "W Circuit, Torres del Paine",
+                  "content_description": "<p>Four days across the Patagonian massif, sleeping in refugios and walking between granite towers, glacial lakes and beech forest. Go in shoulder season and the trail belongs to almost no one.</p>",
+                  "content_cta": "#americas",
+                  "content_ctaText": "Read the full itinerary",
+                  "content_ctaType": "primary"
                 }
               }
             }
