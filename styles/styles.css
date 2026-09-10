@@ -351,9 +351,11 @@ main .section.dark a:any-link {
 }
 
 /* long-form editorial copy sits in a centred column at a readable measure.
+   dark sections get it by default; Narrow applies it on any other surface.
    the measure is on the wrapper, which inherits the body font, so ch is
    sized against body text rather than each heading's own larger font */
-main .section.dark .default-content-wrapper {
+main .section.dark .default-content-wrapper,
+main .section.narrow .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
 }
