@@ -1,5 +1,6 @@
-/* full bleed: cancel the section max-width, padding and vertical rhythm */
-.hero-container {
+/* full bleed: cancel the section max-width, padding and vertical rhythm.
+   needs to outrank the global "main > .section" margin rule */
+main .section.hero-container {
   margin: 0;
 }
 
