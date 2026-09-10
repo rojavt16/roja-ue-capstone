@@ -1,5 +1,5 @@
 /**
- * Authoring contract, see blocks/cta/_cta.json: a single cell holding the
+ * Authoring contract, see blocks/cta-button/_cta-button.json: a single cell holding the
  * anchor built from link, linkText and linkTitle.
  *
  * The anchor is not wrapped in a paragraph, so decorateButtons() never sees
@@ -13,6 +13,6 @@ export default function decorate(block) {
     block.textContent = '';
     return;
   }
-  link.classList.add('button', 'cta-button');
+  link.classList.add('button');
   block.replaceChildren(link);
 }

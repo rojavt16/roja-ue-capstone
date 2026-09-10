@@ -1,18 +1,18 @@
-.cta {
+.cta-button {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin: 24px 0;
 }
 
-.cta .button.cta-button {
+.cta-button a.button {
   border-color: var(--color-orange);
   background-color: var(--color-orange);
   color: #fff;
 }
 
-.cta .button.cta-button:hover,
-.cta .button.cta-button:focus-visible {
+.cta-button a.button:hover,
+.cta-button a.button:focus-visible {
   border-color: var(--color-orange-dark);
   background-color: var(--color-orange-dark);
   color: #fff;
