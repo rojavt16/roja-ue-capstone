@@ -28,16 +28,30 @@
 
 .cards .cards-card-eyebrow {
   padding: 20px 20px 0;
+}
+
+/* category chip */
+.cards .cards-card-eyebrow p {
+  display: inline-block;
+  margin: 0;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background-color: var(--color-orange);
+  color: var(--color-ink);
   font-family: var(--heading-font-family);
   font-size: var(--body-font-size-xs);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-orange-dark);
 }
 
 .cards .cards-card-body {
-  padding: 8px 20px 0;
+  padding: 12px 20px 0;
+}
+
+.cards .cards-card-body p {
+  margin: 0;
+  font-size: var(--body-font-size-xs);
 }
 
 .cards .cards-card-body h3 {
@@ -50,17 +64,34 @@
 .cards .cards-card-link {
   margin-top: auto;
   padding: 16px 20px 20px;
-  font-weight: 500;
 }
 
-.cards .cards-card-eyebrow p,
 .cards .cards-card-link p {
   margin: 0;
 }
 
-.cards .cards-card-body p {
-  margin: 0;
+.cards .cards-card-link a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  border: 2px solid var(--color-ink);
+  border-radius: 2.4em;
+  padding: 0.4em 1.1em;
+  background-color: transparent;
+  color: var(--color-ink);
   font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.cards .cards-card-link a:hover,
+.cards .cards-card-link a:focus-visible {
+  background-color: var(--color-ink);
+  color: var(--background-color);
+  text-decoration: none;
 }
 
 @media (width >= 600px) {
