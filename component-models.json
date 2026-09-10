@@ -136,6 +136,18 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Accent band",
+            "value": "accent"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
@@ -164,84 +176,18 @@
     "id": "columns",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "media_image",
-        "label": "Feature image",
-        "description": "Landscape crop. Pairs with the story copy alongside it.",
-        "multi": false
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "media_imageAlt",
-        "label": "Feature image alt text",
-        "description": "Describe the place. Leave empty only if the image is purely decorative."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "content_title",
-        "label": "Heading",
-        "required": true
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "content_description",
-        "label": "Body copy"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "content_cta",
-        "label": "CTA URL",
-        "description": "In-page anchor such as #americas, or a page path"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "content_ctaText",
-        "label": "CTA label"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "content_ctaTitle",
-        "label": "CTA title attribute"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "content_ctaType",
-        "label": "CTA style",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "classes",
-        "label": "Image position",
-        "description": "Which side the image sits on at desktop widths. Always stacks on mobile.",
-        "options": [
-          {
-            "name": "Left",
-            "value": "image-left"
-          },
-          {
-            "name": "Right",
-            "value": "image-right"
-          }
-        ]
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
       }
     ]
   },
