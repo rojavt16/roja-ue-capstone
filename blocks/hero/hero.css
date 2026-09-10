@@ -103,21 +103,6 @@ main .section.hero-container {
   margin: 0;
 }
 
-/* the secondary button sits on a dark photograph, so it needs its own
-   palette. the primary follows the global button styles */
-.hero .hero-actions .button.secondary {
-  border-color: rgb(255 255 255 / 70%);
-  background-color: transparent;
-  color: #fff;
-}
-
-.hero .hero-actions .button.secondary:hover,
-.hero .hero-actions .button.secondary:focus-visible {
-  border-color: #fff;
-  background-color: #fff;
-  color: var(--color-ink);
-}
-
 @media (width >= 600px) {
   .hero .hero-content {
     padding: 120px 32px 64px;
