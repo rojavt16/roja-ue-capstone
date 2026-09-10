@@ -331,3 +331,30 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+main .section.accent {
+  margin: 0;
+  padding: 48px 0;
+  background-color: var(--color-orange);
+  color: var(--color-ink);
+}
+
+main .section.dark {
+  margin: 0;
+  padding: 56px 0;
+  background-color: var(--color-forest-deep);
+  color: #fff;
+}
+
+main .section.dark a:any-link {
+  color: var(--color-orange);
+}
+
+main .section.centered {
+  text-align: center;
+}
+
+main .section.centered p {
+  max-width: 68ch;
+  margin-inline: auto;
+}
