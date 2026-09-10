@@ -362,10 +362,17 @@ main .section.dark a:any-link {
    same measure on any other surface.
    the measure is on the wrapper, which inherits the body font, so ch is
    sized against body text rather than each heading's own larger font */
-main .section.narrow .default-content-wrapper,
 main .section.dark:not(:where(:has(.block))) .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
+}
+
+/* Narrow insets the section itself rather than centring each wrapper, so that
+   inline wrappers such as consecutive CTA buttons line up with the text.
+   An inline-block ignores auto margins, which is why this cannot sit on the
+   wrappers the way the dark rule above does. */
+main .section.narrow {
+  padding-inline: max(0px, calc((100% - 68ch) / 2));
 }
 
 /* Centered applies to default content only, so blocks in the same section

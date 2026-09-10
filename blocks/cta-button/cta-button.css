@@ -1,8 +1,12 @@
-.cta-button {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 24px 0;
+/* the wrapper goes inline so consecutive CTA buttons share a row. the inline
+   left margin matches the section wrapper padding, so the first button lines
+   up with the text above it and the second sits a gap away */
+main .cta-button-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: none;
+  margin: 16px 0 0 24px;
+  padding-inline: 0;
 }
 
 .cta-button a.button {
@@ -17,4 +21,24 @@
   background-color: var(--color-orange-dark);
   color: #fff;
   text-decoration: none;
+}
+
+.cta-button.secondary a.button {
+  border-color: var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.cta-button.secondary a.button:hover,
+.cta-button.secondary a.button:focus-visible {
+  border-color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  main .cta-button-wrapper {
+    margin-left: 32px;
+  }
 }
