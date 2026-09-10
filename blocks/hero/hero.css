@@ -56,7 +56,7 @@ main .section.hero-container {
   z-index: 1;
   box-sizing: border-box;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 96px 24px 48px;
   color: #fff;
