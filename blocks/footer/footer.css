@@ -31,3 +31,25 @@ footer .footer a:focus-visible {
     padding: 56px 32px 32px;
   }
 }
+
+footer .footer .columns > div {
+  gap: 32px;
+}
+
+/* column headings */
+footer .footer strong {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+/* legal row sits below the link columns */
+footer .footer .default-content-wrapper {
+  margin-top: 32px;
+  border-top: 1px solid rgb(255 255 255 / 16%);
+  padding-top: 20px;
+}
