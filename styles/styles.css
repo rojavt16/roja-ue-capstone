@@ -178,12 +178,6 @@ p.button-wrapper {
   margin: 12px 0;
 }
 
-/* consecutive buttons in default content sit side by side, not stacked */
-main .default-content-wrapper p.button-wrapper {
-  display: inline-block;
-  margin: 16px 8px 0 0;
-}
-
 a.button:any-link,
 button.button {
   box-sizing: border-box;
