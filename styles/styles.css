@@ -178,6 +178,12 @@ p.button-wrapper {
   margin: 12px 0;
 }
 
+/* consecutive buttons in default content sit side by side, not stacked */
+main .default-content-wrapper p.button-wrapper {
+  display: inline-block;
+  margin: 16px 8px 0 0;
+}
+
 a.button:any-link,
 button.button {
   box-sizing: border-box;
@@ -358,6 +364,20 @@ main .section.dark .default-content-wrapper,
 main .section.narrow .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
+}
+
+/* editorial sections lead with the brand accent, matching hero and cards */
+main .section.narrow .default-content-wrapper a.button.primary {
+  border-color: var(--color-orange);
+  background-color: var(--color-orange);
+  color: #fff;
+}
+
+main .section.narrow .default-content-wrapper a.button.primary:hover,
+main .section.narrow .default-content-wrapper a.button.primary:focus-visible {
+  border-color: var(--color-orange-dark);
+  background-color: var(--color-orange-dark);
+  color: #fff;
 }
 
 main .section.centered {
