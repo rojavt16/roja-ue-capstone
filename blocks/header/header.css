@@ -1,6 +1,7 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--color-forest-deep);
+  color: #fff;
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -15,7 +16,7 @@ header nav {
   align-items: center;
   gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
+  max-width: 1088px;
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
@@ -39,7 +40,7 @@ header nav[aria-expanded='true'] {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
+    max-width: 1104px;
     padding: 0 32px;
   }
 
@@ -72,7 +73,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -143,7 +144,10 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 header .nav-brand {
   grid-area: brand;
   flex-basis: 128px;
+  font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-s);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   font-weight: 700;
   line-height: 1;
 }
@@ -269,4 +273,40 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* travel editorial theme */
+header nav .nav-brand a:hover,
+header nav .nav-brand a:focus-visible {
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+header nav .nav-sections ul > li > a:any-link {
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+header nav .nav-sections ul > li > a:hover,
+header nav .nav-sections ul > li > a:focus-visible {
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+header nav .nav-tools a.button.primary {
+  border-color: var(--color-orange);
+  padding: 0.5em 1.1em;
+  background-color: var(--color-orange);
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+}
+
+header nav .nav-tools a.button.primary:hover,
+header nav .nav-tools a.button.primary:focus-visible {
+  border-color: var(--color-orange-dark);
+  background-color: var(--color-orange-dark);
+  color: #fff;
 }
