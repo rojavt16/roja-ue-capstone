@@ -103,20 +103,8 @@ main .section.hero-container {
   margin: 0;
 }
 
-/* buttons sit on a dark photograph, so they need their own palette */
-.hero .hero-actions .button.primary {
-  border-color: var(--color-orange);
-  background-color: var(--color-orange);
-  color: #fff;
-}
-
-.hero .hero-actions .button.primary:hover,
-.hero .hero-actions .button.primary:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
-}
-
+/* the secondary button sits on a dark photograph, so it needs its own
+   palette. the primary follows the global button styles */
 .hero .hero-actions .button.secondary {
   border-color: rgb(255 255 255 / 70%);
   background-color: transparent;

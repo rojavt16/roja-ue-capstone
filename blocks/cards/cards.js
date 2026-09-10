@@ -26,6 +26,15 @@ export default function decorate(block) {
         cell.className = 'cards-card-body';
       } else if (cell.querySelector('a')) {
         cell.className = 'cards-card-link';
+        // the link style renders as <strong> or <em>. decorateButtons only
+        // looks at anchors inside a paragraph, so it skips this cell and the
+        // button classes are applied here instead
+        const anchor = cell.querySelector('a');
+        const emphasis = anchor.closest('strong, em');
+        if (emphasis) {
+          anchor.classList.add('button', emphasis.tagName === 'STRONG' ? 'primary' : 'secondary');
+          emphasis.replaceWith(anchor);
+        }
       } else {
         cell.className = 'cards-card-eyebrow';
         // the field renders as a bare text node, wrap it so the chip

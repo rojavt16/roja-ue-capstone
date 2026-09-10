@@ -70,29 +70,11 @@
   margin: 0;
 }
 
-.cards .cards-card-link a:any-link {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  border: 2px solid var(--color-orange);
-  border-radius: 2.4em;
+/* the link style is authored per card, so only the size is set here and the
+   colours come from the shared button variants */
+.cards .cards-card-link a.button {
   padding: 0.4em 1.1em;
-  background-color: var(--color-orange);
-  color: #fff;
   font-size: var(--body-font-size-xs);
-  font-weight: 500;
-  line-height: 1.25;
-  text-decoration: none;
-}
-
-.cards .cards-card-link a:hover,
-.cards .cards-card-link a:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
-  text-decoration: none;
 }
 
 @media (width >= 600px) {

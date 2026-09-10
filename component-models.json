@@ -207,6 +207,23 @@
         "valueType": "string",
         "name": "linkTitle",
         "label": "Link title attribute"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "linkType",
+        "label": "Link style",
+        "description": "How the destination link renders on the card.",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
       }
     ]
   },
