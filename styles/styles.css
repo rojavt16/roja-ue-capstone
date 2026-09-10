@@ -213,18 +213,18 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--color-orange);
-  background-color: var(--color-orange);
-  color: #fff;
+  border-color: var(--text-color);
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
+  border-color: var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--light-color);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -265,21 +265,20 @@ button.button.secondary:disabled:focus-visible {
   color: var(--dark-color);
 }
 
-/* high-impact call-to-action, the brand accent button */
+/* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--color-orange);
-  background-color: var(--color-orange);
-  color: #fff;
+  border-color: var(--link-color);
+  background-color: var(--link-color);
+  color: var(--background-color);
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
+  border-color: var(--link-hover-color);
+  background-color: var(--link-hover-color);
 }
 
 a.button.accent[aria-disabled="true"],
