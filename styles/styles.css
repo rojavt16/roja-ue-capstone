@@ -356,12 +356,14 @@ main .section.dark a:any-link {
   color: var(--color-orange);
 }
 
-/* long-form editorial copy sits in a centred column at a readable measure.
-   dark sections get it by default; Narrow applies it on any other surface.
+/* Long-form copy sits in a centred reading measure. Dark sections of pure
+   editorial copy get it automatically, while a dark section holding a block
+   keeps full width so its heading aligns with that block. Narrow applies the
+   same measure on any other surface.
    the measure is on the wrapper, which inherits the body font, so ch is
    sized against body text rather than each heading's own larger font */
-main .section.dark .default-content-wrapper,
-main .section.narrow .default-content-wrapper {
+main .section.narrow .default-content-wrapper,
+main .section.dark:not(:where(:has(.block))) .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
 }
@@ -380,11 +382,13 @@ main .section.narrow .default-content-wrapper a.button.primary:focus-visible {
   color: #fff;
 }
 
-main .section.centered {
+/* Centered applies to default content only, so blocks in the same section
+   keep their own alignment rather than inheriting centred text */
+main .section.centered .default-content-wrapper {
   text-align: center;
 }
 
-main .section.centered p {
+main .section.centered .default-content-wrapper p {
   max-width: 68ch;
   margin-inline: auto;
 }
