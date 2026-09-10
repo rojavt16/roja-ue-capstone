@@ -114,10 +114,6 @@
           {
             "name": "secondary",
             "value": "secondary"
-          },
-          {
-            "name": "accent",
-            "value": "accent"
           }
         ]
       }

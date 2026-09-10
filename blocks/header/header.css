@@ -313,17 +313,8 @@ header nav .nav-sections ul > li > a:focus-visible {
   text-decoration: none;
 }
 
+/* colours come from the global primary button, this only adjusts the size */
 header nav .nav-tools a.button.primary {
-  border-color: var(--color-orange);
   padding: 0.5em 1.1em;
-  background-color: var(--color-orange);
-  color: #fff;
   font-size: var(--body-font-size-xs);
-}
-
-header nav .nav-tools a.button.primary:hover,
-header nav .nav-tools a.button.primary:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
 }

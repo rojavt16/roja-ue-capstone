@@ -213,18 +213,18 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--color-orange);
+  background-color: var(--color-orange);
+  color: #fff;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--color-orange-dark);
+  background-color: var(--color-orange-dark);
+  color: #fff;
 }
 
 a.button.primary[aria-disabled="true"],
@@ -367,20 +367,6 @@ main .section.narrow .default-content-wrapper,
 main .section.dark:not(:where(:has(.block))) .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
-}
-
-/* editorial sections lead with the brand accent, matching hero and cards */
-main .section.narrow .default-content-wrapper a.button.primary {
-  border-color: var(--color-orange);
-  background-color: var(--color-orange);
-  color: #fff;
-}
-
-main .section.narrow .default-content-wrapper a.button.primary:hover,
-main .section.narrow .default-content-wrapper a.button.primary:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
 }
 
 /* Centered applies to default content only, so blocks in the same section
