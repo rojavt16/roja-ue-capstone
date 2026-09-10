@@ -28,6 +28,13 @@ export default function decorate(block) {
         cell.className = 'cards-card-link';
       } else {
         cell.className = 'cards-card-eyebrow';
+        // the field renders as a bare text node, wrap it so the chip
+        // hugs its text instead of stretching across the card
+        if (!cell.firstElementChild) {
+          const label = document.createElement('span');
+          label.append(...cell.childNodes);
+          cell.append(label);
+        }
       }
     });
     ul.append(li);

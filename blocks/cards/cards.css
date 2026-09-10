@@ -30,8 +30,8 @@
   padding: 20px 20px 0;
 }
 
-/* category chip */
-.cards .cards-card-eyebrow p {
+/* category chip, applies to the wrapper span or an authored paragraph */
+.cards .cards-card-eyebrow > * {
   display: inline-block;
   margin: 0;
   border-radius: 999px;
@@ -76,11 +76,11 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  border: 2px solid var(--color-ink);
+  border: 2px solid var(--color-orange);
   border-radius: 2.4em;
   padding: 0.4em 1.1em;
-  background-color: transparent;
-  color: var(--color-ink);
+  background-color: var(--color-orange);
+  color: #fff;
   font-size: var(--body-font-size-xs);
   font-weight: 500;
   line-height: 1.25;
@@ -89,8 +89,9 @@
 
 .cards .cards-card-link a:hover,
 .cards .cards-card-link a:focus-visible {
-  background-color: var(--color-ink);
-  color: var(--background-color);
+  border-color: var(--color-orange-dark);
+  background-color: var(--color-orange-dark);
+  color: #fff;
   text-decoration: none;
 }
 
