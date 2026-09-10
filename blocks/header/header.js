@@ -131,10 +131,13 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand?.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    // scripts.js marks button paragraphs as button-wrapper, older boilerplate
+    // used button-container, so tolerate either rather than throwing
+    const brandWrapper = brandLink.closest('.button-wrapper, .button-container');
+    if (brandWrapper) brandWrapper.className = '';
   }
 
   const navSections = nav.querySelector('.nav-sections');
