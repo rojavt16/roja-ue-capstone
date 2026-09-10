@@ -112,3 +112,9 @@ main .section.dark .cards > ul > li {
   border-color: rgb(255 255 255 / 16%);
   background-color: rgb(255 255 255 / 4%);
 }
+
+/* season cards read better at a tighter measure than destination cards */
+main .section.dark .cards-wrapper {
+  max-width: 60%;
+  margin-inline: auto;
+}
