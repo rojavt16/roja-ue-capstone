@@ -215,6 +215,7 @@ a.button.primary,
 button.button.primary {
   border-color: var(--text-color);
   background-color: var(--text-color);
+  box-shadow: 4px 4px 0 0 var(--color-orange);
   color: var(--background-color);
 }
 
@@ -224,6 +225,7 @@ button.button.primary:hover,
 button.button.primary:focus-visible {
   border-color: var(--dark-color);
   background-color: var(--dark-color);
+  box-shadow: 2px 2px 0 0 var(--color-orange-dark);
   color: var(--light-color);
 }
 
@@ -241,7 +243,8 @@ button.button.primary:disabled:focus-visible {
 a.button.secondary,
 button.button.secondary {
   border-color: var(--text-color);
-  background-color: transparent;
+  background-color: #fff;
+  box-shadow: 4px 4px 0 0 var(--color-orange);
   color: var(--text-color);
 }
 
@@ -251,6 +254,7 @@ button.button.secondary:hover,
 button.button.secondary:focus-visible {
   border-color: var(--dark-color);
   background-color: var(--light-color);
+  box-shadow: 2px 2px 0 0 var(--color-orange-dark);
   color: var(--dark-color);
 }
 
@@ -352,7 +356,9 @@ main .section.dark {
   color: #fff;
 }
 
-main .section.dark a:any-link {
+/* body links only, a button keeps the colour its own variant gives it.
+   :where() keeps the specificity unchanged so later rules still win */
+main .section.dark a:any-link:not(:where(.button)) {
   color: var(--color-orange);
 }
 

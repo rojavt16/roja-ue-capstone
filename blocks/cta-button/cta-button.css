@@ -9,9 +9,11 @@ main .cta-button-wrapper {
   padding-inline: 0;
 }
 
+/* orange fill, offset shadow in black */
 .cta-button a.button {
   border-color: var(--color-orange);
   background-color: var(--color-orange);
+  box-shadow: 4px 4px 0 0 var(--color-ink);
   color: #fff;
 }
 
@@ -19,20 +21,24 @@ main .cta-button-wrapper {
 .cta-button a.button:focus-visible {
   border-color: var(--color-orange-dark);
   background-color: var(--color-orange-dark);
+  box-shadow: 2px 2px 0 0 var(--color-ink);
   color: #fff;
   text-decoration: none;
 }
 
+/* transparent fill, offset shadow in orange */
 .cta-button.secondary a.button {
-  border-color: var(--text-color);
+  border-color: var(--color-ink);
   background-color: transparent;
-  color: var(--text-color);
+  box-shadow: 4px 4px 0 0 var(--color-orange);
+  color: var(--color-ink);
 }
 
 .cta-button.secondary a.button:hover,
 .cta-button.secondary a.button:focus-visible {
   border-color: var(--color-ink);
   background-color: var(--color-ink);
+  box-shadow: 2px 2px 0 0 var(--color-orange-dark);
   color: #fff;
   text-decoration: none;
 }
