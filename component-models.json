@@ -236,7 +236,7 @@
         "component": "text",
         "valueType": "string",
         "name": "link",
-        "label": "Primary URL",
+        "label": "URL",
         "description": "In-page anchor such as #americas, or a page path",
         "required": true
       },
@@ -244,33 +244,31 @@
         "component": "text",
         "valueType": "string",
         "name": "linkText",
-        "label": "Primary label",
+        "label": "Label",
         "required": true
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "linkTitle",
-        "label": "Primary title attribute"
+        "label": "Title attribute"
       },
       {
-        "component": "text",
+        "component": "select",
         "valueType": "string",
-        "name": "secondaryLink",
-        "label": "Secondary URL",
-        "description": "Optional. Leave empty to render a single button."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "secondaryLinkText",
-        "label": "Secondary label"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "secondaryLinkTitle",
-        "label": "Secondary title attribute"
+        "name": "classes",
+        "label": "Style",
+        "description": "Place two CTA buttons next to each other to pair them.",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
       }
     ]
   },
