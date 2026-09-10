@@ -9,12 +9,13 @@ main .cta-button-wrapper {
   padding-inline: 0;
 }
 
-/* orange fill, offset shadow in black */
+/* orange fill, offset shadow in black. the label is ink rather than white
+   because white on this orange is 3.49:1, below the 4.5:1 AA threshold */
 .cta-button a.button {
   border-color: var(--color-orange);
   background-color: var(--color-orange);
   box-shadow: 4px 4px 0 0 var(--color-ink);
-  color: #fff;
+  color: var(--color-ink);
 }
 
 .cta-button a.button:hover,

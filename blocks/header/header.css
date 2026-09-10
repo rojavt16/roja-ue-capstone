@@ -313,17 +313,9 @@ header nav .nav-sections ul > li > a:focus-visible {
   text-decoration: none;
 }
 
-header nav .nav-tools a.button.primary {
-  border-color: var(--color-orange);
+/* colours come from the authored button variant, only the size is set here
+   so the action stays compact in the nav bar */
+header nav .nav-tools a.button {
   padding: 0.5em 1.1em;
-  background-color: var(--color-orange);
-  color: #fff;
   font-size: var(--body-font-size-xs);
-}
-
-header nav .nav-tools a.button.primary:hover,
-header nav .nav-tools a.button.primary:focus-visible {
-  border-color: var(--color-orange-dark);
-  background-color: var(--color-orange-dark);
-  color: #fff;
 }
