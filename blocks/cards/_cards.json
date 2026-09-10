@@ -50,11 +50,38 @@
           "description": "Describe the place. Leave empty only if the image is purely decorative."
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow",
+          "label": "Category or region",
+          "description": "Short label above the title, for example Patagonia, Chile."
+        },
+        {
           "component": "richtext",
+          "valueType": "string",
           "name": "text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "label": "Title and description",
+          "description": "Destination title as Heading 3, followed by a short description."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "link",
+          "label": "Destination URL",
+          "description": "In-page anchor such as #europe, or a page path"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Link label",
+          "description": "Make it specific to this destination, it is read on its own by screen readers."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkTitle",
+          "label": "Link title attribute"
         }
       ]
     }

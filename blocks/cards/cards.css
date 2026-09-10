@@ -26,28 +26,8 @@
   object-fit: cover;
 }
 
-.cards .cards-card-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin: 0;
-  padding: 20px;
-}
-
-.cards .cards-card-body p {
-  margin: 0 0 12px;
-  font-size: var(--body-font-size-xs);
-}
-
-.cards .cards-card-body h3 {
-  margin: 0 0 8px;
-  font-size: var(--heading-font-size-s);
-  line-height: 1.2;
-}
-
-/* authoring contract: the first paragraph is the category eyebrow */
-.cards .cards-card-body > p:first-child {
-  margin-bottom: 10px;
+.cards .cards-card-eyebrow {
+  padding: 20px 20px 0;
   font-family: var(--heading-font-family);
   font-size: var(--body-font-size-xs);
   font-weight: 700;
@@ -56,11 +36,31 @@
   color: var(--color-orange-dark);
 }
 
-/* the destination link is always last, pin it to the foot of the card */
-.cards .cards-card-body > p:last-child {
+.cards .cards-card-body {
+  padding: 8px 20px 0;
+}
+
+.cards .cards-card-body h3 {
+  margin: 0 0 8px;
+  font-size: var(--heading-font-size-s);
+  line-height: 1.2;
+}
+
+/* the destination link is pinned to the foot so cards align in the grid */
+.cards .cards-card-link {
   margin-top: auto;
-  margin-bottom: 0;
+  padding: 16px 20px 20px;
   font-weight: 500;
+}
+
+.cards .cards-card-eyebrow p,
+.cards .cards-card-link p {
+  margin: 0;
+}
+
+.cards .cards-card-body p {
+  margin: 0;
+  font-size: var(--body-font-size-xs);
 }
 
 @media (width >= 600px) {

@@ -1,6 +1,14 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+/**
+ * Authoring contract, see blocks/cards/_cards.json. Each card renders as
+ * four cells: image, eyebrow, title and description richtext, destination
+ * link. Cells are classified by what they contain rather than by position,
+ * so a card with an omitted field still renders correctly.
+ *
+ * @param {Element} block The block element
+ */
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -8,9 +16,19 @@ export default function decorate(block) {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+    [...li.children].forEach((cell) => {
+      const hasPicture = cell.querySelector('picture');
+      if (!hasPicture && !cell.textContent.trim()) {
+        cell.remove();
+      } else if (hasPicture) {
+        cell.className = 'cards-card-image';
+      } else if (cell.querySelector('h1, h2, h3, h4, h5, h6')) {
+        cell.className = 'cards-card-body';
+      } else if (cell.querySelector('a')) {
+        cell.className = 'cards-card-link';
+      } else {
+        cell.className = 'cards-card-eyebrow';
+      }
     });
     ul.append(li);
   });
