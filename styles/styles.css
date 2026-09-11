@@ -11,7 +11,6 @@
  */
 
 :root {
-  /* brand palette */
   --color-forest: #1c3b30;
   --color-forest-deep: #12241d;
   --color-orange: #e2622c;
@@ -350,33 +349,19 @@ main .section.dark {
   color: #fff;
 }
 
-/* body links only, a button keeps the colour its own variant gives it.
-   :where() keeps the specificity unchanged so later rules still win */
 main .section.dark a:any-link:not(:where(.button)) {
   color: var(--color-orange);
 }
 
-/* Long-form copy sits in a centred reading measure. Dark sections of pure
-   editorial copy get it automatically, while a dark section holding a block
-   keeps full width so its heading aligns with that block. Narrow applies the
-   same measure on any other surface.
-   the measure is on the wrapper, which inherits the body font, so ch is
-   sized against body text rather than each heading's own larger font */
 main .section.dark:not(:where(:has(.block))) .default-content-wrapper {
   max-width: 68ch;
   margin-inline: auto;
 }
 
-/* Narrow insets the section itself rather than centring each wrapper, so that
-   inline wrappers such as consecutive CTA buttons line up with the text.
-   An inline-block ignores auto margins, which is why this cannot sit on the
-   wrappers the way the dark rule above does. */
 main .section.narrow {
   padding-inline: max(0px, calc((100% - 68ch) / 2));
 }
 
-/* Centered applies to default content only, so blocks in the same section
-   keep their own alignment rather than inheriting centred text */
 main .section.centered .default-content-wrapper {
   text-align: center;
 }

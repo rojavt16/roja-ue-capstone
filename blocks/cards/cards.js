@@ -1,14 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-/**
- * Authoring contract, see blocks/cards/_cards.json. Each card renders as
- * four cells: image, eyebrow, title and description richtext, destination
- * link. Cells are classified by what they contain rather than by position,
- * so a card with an omitted field still renders correctly.
- *
- * @param {Element} block The block element
- */
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -26,9 +18,6 @@ export default function decorate(block) {
         cell.className = 'cards-card-body';
       } else if (cell.querySelector('a')) {
         cell.className = 'cards-card-link';
-        // the link style renders as <strong> or <em>. decorateButtons only
-        // looks at anchors inside a paragraph, so it skips this cell and the
-        // button classes are applied here instead
         const anchor = cell.querySelector('a');
         const emphasis = anchor.closest('strong, em');
         if (emphasis) {
@@ -37,8 +26,6 @@ export default function decorate(block) {
         }
       } else {
         cell.className = 'cards-card-eyebrow';
-        // the field renders as a bare text node, wrap it so the chip
-        // hugs its text instead of stretching across the card
         if (!cell.firstElementChild) {
           const label = document.createElement('span');
           label.append(...cell.childNodes);

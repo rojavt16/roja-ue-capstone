@@ -30,7 +30,6 @@
   padding: 20px 20px 0;
 }
 
-/* category chip, applies to the wrapper span or an authored paragraph */
 .cards .cards-card-eyebrow > * {
   display: inline-block;
   margin: 0;
@@ -60,7 +59,6 @@
   line-height: 1.2;
 }
 
-/* the destination link is pinned to the foot so cards align in the grid */
 .cards .cards-card-link {
   margin-top: auto;
   padding: 16px 20px 20px;
@@ -70,8 +68,6 @@
   margin: 0;
 }
 
-/* the link style is authored per card, so only the size is set here and the
-   colours come from the shared button variants */
 .cards .cards-card-link a.button {
   padding: 0.4em 1.1em;
   font-size: var(--body-font-size-xs);
@@ -89,14 +85,11 @@
   }
 }
 
-/* cards sitting on a dark section surface */
 main .section.dark .cards > ul > li {
   border-color: rgb(255 255 255 / 16%);
   background-color: rgb(255 255 255 / 4%);
 }
 
-/* season cards read better at a tighter measure than destination cards,
-   but only once there is width to spare, they stack full width on mobile */
 @media (width >= 900px) {
   main .section.dark .cards-wrapper {
     max-width: 60%;

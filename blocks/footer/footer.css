@@ -36,7 +36,6 @@ footer .footer .columns > div {
   gap: 32px;
 }
 
-/* column headings */
 footer .footer strong {
   display: block;
   margin-bottom: 12px;
@@ -47,7 +46,6 @@ footer .footer strong {
   color: var(--color-orange);
 }
 
-/* legal row sits below the link columns */
 footer .footer .default-content-wrapper {
   margin-top: 32px;
   border-top: 1px solid rgb(255 255 255 / 16%);

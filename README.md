@@ -34,15 +34,23 @@ npm run build:json    # regenerate the aggregate component JSON
 
 ### Working on models
 
-Edit the **partials** only:
+Edit the **partials** only — `blocks/<name>/_<name>.json` and `models/_*.json` — then run
+`npm run build:json`, which regenerates `component-definition.json`, `component-models.json`
+and `component-filters.json`.
 
-- `blocks/<name>/_<name>.json`
-- `models/_*.json`
+**All three aggregates must be committed and pushed.** Edge Delivery has no server-side build
+step; the repository *is* the deployment, and Universal Editor fetches those files over HTTP
+from the deployed site. A model change that is not pushed does not exist as far as the editor
+is concerned.
 
-Then run `npm run build:json`, which regenerates `component-definition.json`,
-`component-models.json` and `component-filters.json`. **All three must be committed and pushed** —
-the Universal Editor reads them over HTTP from the deployed site, not from your working copy.
-A model change that is not pushed will not appear in the editor.
+Two related gotchas worth knowing:
+
+- **Changing a model does not migrate existing blocks.** The resource type is written into the
+  content node when the block is inserted, so an edited definition only affects *newly inserted*
+  blocks. Existing ones must be deleted and re-inserted.
+- **The block CSS and JS file names come from the template `name`, not the folder.**
+  `"name": "CTA Button"` renders `<div class="cta-button">`, so the code must live at
+  `blocks/cta-button/cta-button.{js,css}`. A mismatch silently loads nothing.
 
 ## Page map — `/destinations`
 
@@ -54,8 +62,8 @@ A model change that is not pushed will not appear in the editor.
 | 4 | Americas | — | Title + Text + `cards` block (3 cards) |
 | 5 | Europe | — | Title + Text + `cards` block (3 cards) |
 | 6 | Permits and logistics | `Dark` | Title + Text |
-| 7 | Regional editors | `Highlight` + `Narrow` | Title + Text + 2 Buttons |
-| 8 | Briefing / Planning by season | `Dark` + `Centered` | Title + Text + Button, Title + `cards` block (3 cards) |
+| 7 | Regional editors | `Highlight` + `Narrow` | Title + Text + 2 `cta-button` blocks |
+| 8 | Briefing / Planning by season | `Dark` + `Centered` | Title + Text + Button, Title + `cards` block |
 
 Header and footer are global, loaded from the `/nav` and `/footer` pages.
 
@@ -66,63 +74,96 @@ In-page navigation uses auto-generated heading IDs — `#americas`, `#europe`,
 
 ### `hero` — Hero Banner
 
-Full-bleed background image with a gradient scrim and overlaid editorial copy.
-Renders the page's single `<h1>`.
+Full-bleed background image with a gradient scrim and overlaid editorial copy. Renders the
+page's single `<h1>`. The boilerplate shipped an empty `hero.js`; the decoration is ours.
 
-| Field | Type | Notes |
-|---|---|---|
-| Background image / alt text | reference + text | LCP candidate, loaded eagerly |
-| Eyebrow | text | renders as an orange chip |
-| Heading | text | **required**, promoted to `<h1>` |
-| Supporting copy | richtext | |
-| Primary CTA — URL / label / title / style | text + select | **URL required** |
-| Secondary CTA — URL / label / title / style | text + select | optional |
+| Field | Notes |
+|---|---|
+| `background_image` / `background_imageAlt` | LCP candidate, loaded eagerly with `fetchpriority="high"` |
+| `foreground_eyebrow` | renders as an orange chip |
+| `foreground_title` | **required**, promoted to `<h1>` |
+| `foreground_description` | richtext |
+| `foreground_primaryCta` + `Text` / `Title` / `Type` | **URL required** |
+| `foreground_secondaryCta` + `Text` / `Title` / `Type` | optional |
 
-Thirteen fields render as **two cells** using element grouping (`background_` and `foreground_`
-prefixes), which keeps the block within the `xwalk/max-cells` limit of four while leaving every
-field individually selectable in the editor.
-
-### `columns` — Columns
-
-The unmodified boilerplate container. Two columns, each accepting Image, Title, Text and Button
-components.
+Thirteen fields render as **two cells**. The `background_` and `foreground_` prefixes group
+fields into one cell each (*element grouping*), and within them `image`+`imageAlt` and
+`link`+`linkText`+`linkTitle`+`linkType` collapse into single elements (*field collapsing*).
+That keeps the block inside the `xwalk/max-cells` limit of four while leaving every field
+individually selectable in the editor.
 
 ### `cards` — Cards / Card
 
-Responsive grid: 1 column on mobile, 2 from 600px, 3 from 900px. Used three times — Americas,
-Europe and Planning by season.
+Responsive grid, full width to 599px, two columns from 600px, three from 900px. Used three
+times: Americas, Europe, and Planning by season.
 
-| Field | Type | Notes |
-|---|---|---|
-| Image / Image Alt Text | reference + text | 4:3 crop |
-| Category or region | text | renders as an orange chip |
-| Title and description | richtext | `<h3>` heading plus a paragraph |
-| Destination URL / label / title | text | renders as an orange pill button |
+| Field | Notes |
+|---|---|
+| `image` / `imageAlt` | 4:3 crop |
+| `eyebrow` | renders as an orange chip |
+| `text` | richtext — `<h3>` title plus a description |
+| `link` + `linkText` / `linkTitle` / `linkType` | `linkType` picks the button variant |
 
-Cells are classified by **content**, not position — a card with a field left empty still renders
-correctly, which is how the text-only Planning by season cards work.
+`cards.js` classifies cells by **content**, not position — picture, heading, link, otherwise
+eyebrow — and drops empty ones. That is what allows the image-less "Planning by season" cards
+to share one block implementation with the destination cards.
+
+### `cta-button` — CTA Button
+
+The only entirely new block. Renders a single authored link as a button, with a `classes`
+field selecting the variant. Two placed next to each other sit on one row, because
+`.cta-button-wrapper` is `display: inline-block`.
+
+| Field | Notes |
+|---|---|
+| `link` | **required** |
+| `linkText` | **required** |
+| `linkTitle` | optional |
+| `classes` | `Primary` (orange fill) or `Secondary` (transparent) |
+
+`decorateButtons()` only matches anchors inside a paragraph, and this anchor sits bare in its
+cell, so `cta-button.js` adds the `button` class itself and inherits the shared button shape.
+
+### `columns` — Columns
+
+The **unmodified boilerplate container**. Two columns accepting Image, Title, Text and Button.
 
 ### `header` / `footer`
 
-Boilerplate blocks. Content comes from the `/nav` and `/footer` pages via `loadFragment`.
+Boilerplate blocks, restyled. Content comes from the `/nav` and `/footer` pages via
+`loadFragment`. `/nav` requires exactly three sections, mapped positionally to `.nav-brand`,
+`.nav-sections` and `.nav-tools`; the second must contain a real `<ul>`.
 
-`/nav` requires exactly three sections, mapped positionally to `.nav-brand`, `.nav-sections`
-and `.nav-tools`. The second must contain a real `<ul>`.
+The brand mark is `icons/waypoint.svg`, authored as the `:waypoint:` token in the nav's first
+section.
 
 ## Section styles
 
-Applied per section through the Style multiselect, and combinable.
+Applied per section through the Style multiselect, and combinable. Only `Highlight` came with
+the boilerplate; the rest were added for this project.
 
 | Style | Effect |
 |---|---|
-| `Highlight` | cream background |
-| `Accent band` | orange background, dark ink text |
-| `Dark` | deep forest background, white text, orange links |
+| `Highlight` | cream background *(boilerplate)* |
+| `Accent band` | orange background, ink text |
+| `Dark` | deep forest background, white text, orange body links |
 | `Centered` | centres default content; blocks keep their own alignment |
-| `Narrow` | 68ch centred reading measure for default content |
+| `Narrow` | insets the section to a 68ch reading measure |
 
-Dark sections containing **only** default content get the reading measure automatically. A dark
-section containing a block keeps full width so its heading aligns with that block.
+A dark section containing **only** editorial copy gets the reading measure automatically. One
+containing a block keeps full width so its heading aligns with that block.
+
+## Buttons
+
+No block hardcodes button colours. Variants live in `styles/styles.css`, and the CTA block
+defines its own two in `blocks/cta-button/cta-button.css`. All carry a 4px hard offset shadow.
+
+| Variant | Fill | Shadow | Authored as |
+|---|---|---|---|
+| `primary` | dark | orange | Button component, Type = primary |
+| `secondary` | white | orange | Button component, Type = secondary |
+| CTA primary | orange, ink label | black | CTA Button block, Style = Primary |
+| CTA secondary | transparent | orange | CTA Button block, Style = Secondary |
 
 ## Design tokens
 
@@ -140,7 +181,7 @@ blocks pick up the theme without modification.
 
 ## Image credits
 
-All photography is from Wikimedia Commons. Three licences require attribution.
+All photography is from Wikimedia Commons. Several licences require attribution.
 
 | Image | Author | Licence |
 |---|---|---|
@@ -153,30 +194,19 @@ All photography is from Wikimedia Commons. Three licences require attribution.
 | Card — Tre Cime di Lavaredo | Simo Räsänen | CC BY-SA 4.0 |
 | Card — Isle of Skye | Henk Monster | CC BY 3.0 |
 
-## Known limitations
+`icons/waypoint.svg` is original work for this project.
 
-1. **Columns has no image-position field.** The brief suggested a left/right display option. The
-   block uses the unmodified boilerplate container instead, so image position is determined by
-   which column the author places the Image component in. Same outcome for the reader, but it is
-   not a model field.
+## Test results
 
-2. **Header and footer are not selectable from `/destinations`.** They are authored on the `/nav`
-   and `/footer` pages, which is the standard EDS pattern and keeps the real `<header>` and
-   `<footer>` landmarks. The trade-off is that a reviewer opens two extra pages in the editor.
+PageSpeed Insights, mobile, against the live URL.
 
-3. **Link URLs are plain text fields, not content pickers.** Every internal link on this one-page
-   site is a hash anchor, which the `aem-content` picker cannot produce. Required URL fields use
-   `required: true` for validation instead.
-
-4. **Button contrast is below AA.** White text on `--color-orange` (`#e2622c`) measures 3.49:1
-   against a 4.5:1 requirement. This affects the hero CTAs, card buttons and the header action.
-   Retained as a deliberate visual choice; the accessible fix is a dark ink label (4.96:1) or the
-   darker `#c44f1e` fill with white text (4.71:1).
-
-5. **The briefing and Planning by season share one section.** They are separate bands in the
-   reference design. Merged, they cannot take different alignment treatments.
-
-## QA checklist
+| Metric | Score |
+|---|---|
+| Performance | **99** |
+| Accessibility | **95** → 100 expected after the contrast fix |
+| Best Practices | **100** |
+| SEO | 69 — see limitation 4 |
+| Browser console | No issues |
 
 | Check | Status |
 |---|---|
@@ -186,7 +216,40 @@ All photography is from Wikimedia Commons. Three licences require attribution.
 | Descriptive, unique link labels on all six cards | ✅ |
 | In-page anchors resolve | ✅ |
 | Visible focus states on all interactive elements | ✅ |
+| No console errors | ✅ |
+| Colour contrast meets AA | ✅ after switching orange buttons to ink labels |
 | Responsive at 375 / 600 / 900 / 1200px | ⬜ to verify |
-| No console errors | ⬜ to verify |
-| PageSpeed Insights against the preview URL | ⬜ to verify |
-| Colour contrast | ⚠️ see known limitation 4 |
+
+## Known limitations
+
+1. **Columns has no image-position field.** The brief suggested a left/right display option. A
+   custom model with that field was built and then reverted in favour of the unmodified
+   boilerplate container, so image position is determined by which column the author places the
+   Image component in. Same result for the reader, but it is not a model field.
+
+2. **Header and footer are not selectable from `/destinations`.** They are authored on the
+   `/nav` and `/footer` pages, which is the standard EDS pattern and keeps the real `<header>`
+   and `<footer>` landmarks. A reviewer opens two extra pages in the editor to edit them.
+
+3. **A third button variant is not reachable through the Button component.** AEM maps only
+   `linkType: primary` → `<strong>` and `secondary` → `<em>`. An `accent` value emits a bare
+   anchor, which `decorateButtons()` ignores, so it renders as a plain link. The accent action
+   is therefore delivered as the `cta-button` block instead. Custom resource types are not an
+   option — `xwalk/no-custom-resource-types` restricts them to AEM-provided prefixes.
+
+4. **SEO scores 69 on the preview and live hosts.** AEM serves `X-Robots-Tag: noindex, nofollow`
+   and a blanket `Disallow: /` robots.txt on every `*.aem.page` and `*.aem.live` host to prevent
+   duplicate-content penalties against the real domain. Lighthouse deducts for "page is blocked
+   from indexing". This resolves on a production domain with the CDN configured.
+
+5. **Link URLs are plain text fields, not content pickers.** Every internal link on this
+   one-page site is a hash anchor, which the `aem-content` picker cannot produce. Required URL
+   fields use `required: true` for validation instead.
+
+6. **Blocks cannot be nested inside a column.** `decorateBlocks()` matches only
+   `div.section > div > div`, so a block placed in a column cell is never marked or loaded. It
+   is achievable by calling `decorateBlock()` and `loadBlock()` from `columns.js`, but that was
+   tried and reverted as off the boilerplate's supported path.
+
+7. **The briefing and Planning by season share one section.** They are separate bands in the
+   reference design. Merged, they cannot take different alignment treatments.
