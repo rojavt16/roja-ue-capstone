@@ -1,6 +1,4 @@
-import { decorateBlock, loadBlock } from '../../scripts/aem.js';
-
-export default async function decorate(block) {
+export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
@@ -17,13 +15,4 @@ export default async function decorate(block) {
       }
     });
   });
-
-  // decorateBlocks() only looks at "div.section > div > div", so a block
-  // nested in a column is never marked or loaded. Do it here instead.
-  const nested = [...block.querySelectorAll(':scope > div > div > div[class]')]
-    .filter((el) => !el.classList.contains('block'));
-  await Promise.all(nested.map((el) => {
-    decorateBlock(el);
-    return loadBlock(el);
-  }));
 }
